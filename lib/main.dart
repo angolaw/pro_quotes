@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:pro_quotes/data/core/api_client.dart';
-import 'package:pro_quotes/data/datasources/random_quote_remote_datasource.dart';
+import 'package:pro_quotes/data/datasources/quotes_remote_datasource.dart';
 import 'package:pro_quotes/data/models/random_quote_model.dart';
 
 void main() async {
