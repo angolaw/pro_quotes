@@ -36,7 +36,15 @@ class MyApp extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Center(child: Text(quote.quote ?? "No quote"))],
+          children: [
+            Center(
+                child: Column(
+              children: [
+                Text(quote.quote ?? "No quote"),
+                Text(quotes.length.toString()),
+              ],
+            ))
+          ],
         ),
       ),
     );
