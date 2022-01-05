@@ -22,4 +22,9 @@ class RandomQuoteModel {
     data['permalink'] = permalink;
     return data;
   }
+
+  @override
+  String toString() {
+    return "$id - $quote";
+  }
 }
