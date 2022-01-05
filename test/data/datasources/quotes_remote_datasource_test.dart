@@ -1,8 +1,9 @@
 // 1 - Criar mock do HttpClient
 // 2 - Criar impl do remoteDataSource
 import 'package:http/http.dart' as http;
-import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:pro_quotes/data/core/api_constants.dart';
 import 'package:pro_quotes/data/models/popular_quotes_model.dart';
 import 'package:pro_quotes/data/models/random_quote_model.dart';
 
@@ -28,7 +29,8 @@ class QuotesRemoteDatasourceImpl implements QuotesRemoteDatasource {
 
   @override
   Future<RandomQuoteModel?> getRandomQuote() async {
-    return null;
+    client.get(Uri.parse(ApiConstants.API_RANDOM),
+        headers: {"Content-Type": "application/json"});
   }
 }
 
@@ -45,7 +47,7 @@ void main() {
     test("should return a random quote when called", () async {
       //arrange
       // ! get uri with any null problem
-      when(mockHttpClient.get(Uri.parse(""), headers: anyNamed("headers")))
+      when(mockHttpClient.get(any, headers: anyNamed("headers")))
           .thenAnswer((_) async => http.Response(fixture("quote.json"), 200));
 
       //act
