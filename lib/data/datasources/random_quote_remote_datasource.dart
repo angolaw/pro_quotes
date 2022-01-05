@@ -15,7 +15,7 @@ class RandomQuoteRemoteDatasourceImpl extends RandomQuoteRemoteDatasource {
 
   @override
   Future<RandomQuoteModel> getRandomQuote() async {
-    final response = await _client.get(Uri.parse('${ApiConstants.API_RANDOM}'),
+    final response = await _client.get(Uri.parse(ApiConstants.API_RANDOM),
         headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {
       final responseBody = json.decode(response.body);
