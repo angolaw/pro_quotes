@@ -6,6 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pro_quotes/data/models/popular_quotes_model.dart';
 import 'package:pro_quotes/data/models/random_quote_model.dart';
 
+import '../../fixture/fixture_reader.dart';
+
 class MockHttpClient extends Mock implements http.Client {}
 
 abstract class QuotesRemoteDatasource {
@@ -42,7 +44,17 @@ void main() {
   group("getRandomQuote", () {
     test("should return a random quote when called", () async {
       //arrange
-      when(mockHttpClient.get(any, headers: anyNamed("headers"))).thenAnswer(() async => http.Response())
+      // ! get uri with any null problem
+      when(mockHttpClient.get(Uri.parse(""), headers: anyNamed("headers")))
+          .thenAnswer((_) async => http.Response(fixture("quote.json"), 200));
+
+      //act
+      dataSource.getRandomQuote();
+
+      //assert
+      verify(mockHttpClient.get(
+          Uri.parse("http://quotes.stormconsultancy.co.uk/quotes/1"),
+          headers: anyNamed("headers")));
     });
   });
 }
