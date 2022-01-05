@@ -1,3 +1,5 @@
+import 'package:pro_quotes/data/models/quote_model.dart';
+
 class PopularQuotesModel {
   String? author;
   int? id;
