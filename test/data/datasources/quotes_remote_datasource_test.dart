@@ -31,11 +31,18 @@ class QuotesRemoteDatasourceImpl implements QuotesRemoteDatasource {
 }
 
 void main() {
-  QuotesRemoteDatasourceImpl dataSource;
-  MockHttpClient mockHttpClient;
+  late QuotesRemoteDatasourceImpl dataSource;
+  late MockHttpClient mockHttpClient;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
     dataSource = QuotesRemoteDatasourceImpl(client: mockHttpClient);
+  });
+
+  group("getRandomQuote", () {
+    test("should return a random quote when called", () async {
+      //arrange
+      when(mockHttpClient.get(any, headers: anyNamed("headers"))).thenAnswer(() async => http.Response())
+    });
   });
 }
