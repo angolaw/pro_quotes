@@ -6,11 +6,12 @@ class RandomQuoteModel {
 
   RandomQuoteModel({this.author, this.id, this.quote, this.permalink});
 
-  RandomQuoteModel.fromJson(Map<String, dynamic> json) {
-    author = json['author'];
-    id = json['id'];
-    quote = json['quote'];
-    permalink = json['permalink'];
+  factory RandomQuoteModel.fromJson(Map<String, dynamic> json) {
+    return RandomQuoteModel(
+        author: json['author'],
+        id: json['id'],
+        quote: json['quote'],
+        permalink: json['permalink']);
   }
 
   Map<String, dynamic> toJson() {
